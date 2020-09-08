@@ -18,17 +18,35 @@ const UpdateDetails = () => {
 
     const Increase = () => {
         setClick(prevClick => prevClick + 1);
-
+    
     }
+    
+
+    const [complete, setComplete] = useState(false)
+
+    const [bold, setBold] = useState(false)
+        
     
     return(
         <div>
-            <Details name={setName} age={setAge}/>
+            <Details name={setName} 
+                     age={setAge} />
             
-            <button onClick={Increase}>Submit</button>
-            <p borderStyle="solid" borderColor="black">Name: {name}</p>
-            <p borderStyle="solid" borderColor="black">Age: {age}</p>
+            <input value={name} onChange={e => setName(e.target.value)} placeholder="name" />
+            <input value={age} onChange={e => setAge(e.target.value)} placeholder="age" />
+
+            <button onClick={(setName, setAge, Increase, setComplete)}>Submit</button>
+            
+            {complete ? <p>Name: {name} </p> : null}
+            {complete ? <p>Age: {age}</p> : null}
             <p>Number of Clicks: {click}</p>
+
+            <button onClick={()=> setBold(true)}>Make me bold!</button>
+
+            
+            
+
+
         </div>
     )
 }
